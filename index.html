@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Component Tutorial</title>
+</head>
+<body>
+    <main>
+        <custom-input></custom-input>
+    </main>
+    <script>
+        class CustomInput extends HTMLElement {
+            connectedCallback() {
+                const $label = document.createElement('label')
+                $label.innerHTML = 'put your name here'
+
+                const $input = document.createElement('input')
+                $input.type = 'text'
+
+                this.appendChild($label)
+                this.appendChild($input)
+            }
+        }
+
+        customElements.define('custom-input', CustomInput)
+    </script>
+</body>
+</html>
