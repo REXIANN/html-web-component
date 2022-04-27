@@ -11,6 +11,10 @@
     <script>
         class CustomInput extends HTMLElement {
             connectedCallback() {
+                this.render()
+            }
+
+            render() {
                 const $label = document.createElement('label')
                 $label.innerHTML = 'put your name here'
 
@@ -19,6 +23,15 @@
 
                 this.appendChild($label)
                 this.appendChild($input)
+            }
+
+            static get observedAttributes() {
+                // watch returned attributes
+                return ['name']
+            }
+            attributeChangedCallback() {
+                // called when observing attrs are changed
+                this.render()
             }
         }
 
